@@ -5,15 +5,15 @@
 #include <TTree.h>
 #include <TH1D.h>
 #include <TGraph.h>
+#include <TF1.h>
 #include <vector>
 #include <map>
 
 #include "JunLossCorrection.hh"
 #include "JunArrayOfParticle.hh"
 
-
 //
-extern double beamEnergy;
+extern double PP_Be[3];
 //thickness of dead layer [um]
 extern double DL_l0[3];//w1 bb7 ssd
 extern double DL_r0[3];//w1 bb7 ssd
@@ -41,8 +41,9 @@ public:
 private:
   void InitTree();
   void Loop();
+  void Update();
   double Calculate(sInfo _si);
-  double Loss();
+  double getLoss(TH1D *hd,TGraph *gd);
   JunParticle getMM(double _et,TVector3 _dir,int _flag);
   JunArrayOfParticle *ps;
   int runno;
@@ -59,6 +60,7 @@ private:
   int par_num;
   map<string,double> m_Par;
   map<string,double> m_dPar;
+  map<string,double> m_step;
   map<int,string> m_tname;
 };
 

@@ -16,6 +16,8 @@
 using namespace std;
 using namespace reDef;
 
+//double three peaks
+double PP_Be[3] = {0,3.68,7.55};
 //thickness of dead layer [um]
 double DL_l0[3] = {1.25,1.1,1.3};//w1 bb7 ssd
 double DL_r0[3] = {0.75,0.8,0.7};//w1 bb7 ssd
